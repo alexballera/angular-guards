@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './pages/home/home.component';
-import { RegistroComponent } from './pages/registro/registro.component';
 import { PerfilesComponent } from './pages/perfiles/perfiles.component';
 
 // Import the module from the SDK
@@ -15,9 +13,7 @@ import { AuthModule } from '@auth0/auth0-angular';
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
     PerfilesComponent,
-    RegistroComponent
   ],
   imports: [
     BrowserModule,
