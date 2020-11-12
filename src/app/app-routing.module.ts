@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PerfilesComponent } from './pages/perfiles/perfiles.component';
 import { AuthGuard } from './services/auth.guard';
+// import { PerfilesComponent } from './pages/perfiles/perfiles.component';
 
 const routes: Routes = [
   {
@@ -14,6 +14,7 @@ const routes: Routes = [
   },
   {
     path: `perfiles`,
+    canLoad: [AuthGuard],
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./pages/perfiles/perfiles.module').then(m => m.PerfilesModule)
