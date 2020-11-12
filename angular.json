@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-guards"
+    }
+  },
+  "defaultProject": "angular-guards",
+  "cli": {
+    "analytics": "8ab83011-0d81-454d-b09f-cc73aca0016c"
+  }
 }

@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['home']">Auth0 App</a>
+
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['home']" >Home</a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['registro']" >Registro</a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated$ | async;">
+        <a class="nav-link" [routerLink]="['perfiles']">Perfiles</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+
+      <ng-template #loggedOut>
+        <button type="button"
+                class="btn btn-outline-primary"
+                (click)="auth.loginWithRedirect()">
+          Ingresar
+        </button>
+      </ng-template>
+
+
+      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+
+        <button type="button"
+              class="btn btn-outline-danger"
+              (click)="auth.logout({ returnTo: document.location.origin })">
+        Salir
+      </button>
+      </ng-container>
+    </span>
+
+  </div>
+</nav>
+
