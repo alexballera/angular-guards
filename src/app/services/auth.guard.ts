@@ -7,7 +7,8 @@ import { AuthService } from '@auth0/auth0-angular';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  constructor(public auth: AuthService, private router: Router) {
+  constructor(private auth: AuthService,
+              private router: Router) {
   }
   canActivate(
     route: ActivatedRouteSnapshot,
