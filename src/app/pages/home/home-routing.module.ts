@@ -4,7 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent
+    path: '',
+    children: [
+      {
+        path: '',
+        component: HomeComponent
+      }
+    ]
   }
 ];
 

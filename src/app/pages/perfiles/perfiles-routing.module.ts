@@ -1,10 +1,20 @@
+import { AuthGuard } from './../../services/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PerfilesComponent } from './perfiles.component';
 
 const routes: Routes = [
   {
-    path: '', component: PerfilesComponent
+    path: '',
+    canActivateChild: [AuthGuard],
+    // canLoad: [AuthGuard],
+    // canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: PerfilesComponent
+      }
+    ]
   }
 ];
 

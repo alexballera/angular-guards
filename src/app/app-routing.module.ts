@@ -1,25 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './services/auth.guard';
-// import { PerfilesComponent } from './pages/perfiles/perfiles.component';
 
 const routes: Routes = [
   {
-    path: `home`, loadChildren: () =>
+    path: `home`,
+    loadChildren: () =>
       import('./pages/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: `registro`, loadChildren: () =>
+    path: `registro`,
+    loadChildren: () =>
       import('./pages/registro/registro.module').then(m => m.RegistroModule)
   },
   {
     path: `perfiles`,
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./pages/perfiles/perfiles.module').then(m => m.PerfilesModule)
   },
-  // {path: 'perfiles', component: PerfilesComponent, canActivate: [AuthGuard]},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
 

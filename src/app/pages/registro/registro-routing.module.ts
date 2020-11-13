@@ -4,7 +4,13 @@ import { RegistroComponent } from './registro.component';
 
 const routes: Routes = [
   {
-    path: '', component: RegistroComponent
+    path: '',
+    children: [
+      {
+        path: '',
+        component: RegistroComponent
+      }
+    ]
   }
 ];
 
