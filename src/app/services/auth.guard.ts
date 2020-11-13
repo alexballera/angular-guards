@@ -27,9 +27,9 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   checkIsAuthenticated(): boolean {
-    let valor = false;
-    this.auth.isAuthenticated$.subscribe(val => valor = val).unsubscribe();
-    if (!valor) {
+    let value = false;
+    this.auth.isAuthenticated$.subscribe(val => value = val).unsubscribe();
+    if (!value) {
       this.router.navigate(['home']);
       return false;
     }
