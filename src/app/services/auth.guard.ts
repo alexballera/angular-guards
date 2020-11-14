@@ -20,6 +20,10 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      if (childRoute.data.role !== 'admin') {
+        console.log('No eres adminsitrador');
+        return false;
+      }
       return this.checkIsAuthenticated();
   }
   // Determia si un usuario puede salir de una ruta específica. p.e un formulario si no ha guardado los cambios

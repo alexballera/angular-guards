@@ -14,7 +14,8 @@ const routes: Routes = [
         path: '',
         component: PerfilesComponent
       }
-    ]
+    ],
+    data: { role: 'admin' } // checarlo, compararlo con servidor y dar autorizaciones
   }
 ];
 
