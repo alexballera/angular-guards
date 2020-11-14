@@ -9,7 +9,11 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  user: any;
 
   constructor(@Inject(DOCUMENT) public document: Document,
-              public auth: AuthService) {}
+              public auth: AuthService) {
+                auth.user$.subscribe(data => this.user = data);
+                console.log(this.user);
+              }
 }
