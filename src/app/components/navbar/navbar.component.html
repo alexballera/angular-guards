@@ -12,7 +12,11 @@
       </li>
 
       <li class="nav-item" routerLinkActive="active" *ngIf="(auth.isAuthenticated$ | async) && user.email === 'alexballera@gmail.com'">
-        <a class="nav-link" [routerLink]="['perfiles']">Perfiles</a>
+        <a class="nav-link" [routerLink]="['perfiles']">Admin</a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active" *ngIf="(auth.isAuthenticated$ | async) && user.email !== 'alexballera@gmail.com'">
+        <a class="nav-link" [routerLink]="['perfiles']">User</a>
       </li>
     </ul>
     <span class="navbar-text">
