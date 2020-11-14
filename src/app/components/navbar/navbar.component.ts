@@ -14,6 +14,5 @@ export class NavbarComponent {
   constructor(@Inject(DOCUMENT) public document: Document,
               public auth: AuthService) {
                 auth.user$.subscribe(data => this.user = data);
-                console.log(this.user);
               }
 }
