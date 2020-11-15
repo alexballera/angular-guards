@@ -6,16 +6,16 @@ import { PerfilesComponent } from './perfiles.component';
 const routes: Routes = [
   {
     path: '',
-    canActivateChild: [AuthGuard],
+    // canActivateChild: [AuthGuard],
     // canLoad: [AuthGuard],
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
+    data: { role: 'admin' }, // checarlo, compararlo con servidor y dar autorizaciones
     children: [
       {
         path: '',
         component: PerfilesComponent
       }
     ],
-    data: { role: 'admin' } // checarlo, compararlo con servidor y dar autorizaciones
   }
 ];
 

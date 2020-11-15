@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return this.canActivate(childRoute, state);
+      return this.checkIsAuthenticated();
   }
   // Determina si un usuario puede salir de una ruta específica. p.e un formulario si no ha guardado los cambios
   canDeactivate(

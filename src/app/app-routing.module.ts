@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/perfiles/perfiles.module').then(m => m.PerfilesModule)
   },
+  {
+    path: 'posts',
+    loadChildren: () =>
+      import('./pages/posts/posts.module').then(m => m.PostsModule)
+  },
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
 
