@@ -1,5 +1,5 @@
 <h1>Perfil de
-  <ng-container *ngIf="this.role === 'admin'; else elseTemplate">
+  <ng-container *ngIf="role === 'admin'; else elseTemplate">
     <span>Administrador</span>
   </ng-container>
   <ng-template #elseTemplate>

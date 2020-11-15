@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 
@@ -8,11 +8,35 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
-  user: any;
+export class NavbarComponent implements OnInit, OnDestroy {
+  role: string;
+  subs$;
 
   constructor(@Inject(DOCUMENT) public document: Document,
               public auth: AuthService) {
-                auth.user$.subscribe(data => this.user = data);
-              }
+    this.subs$ = this.auth.user$;
+  }
+
+  ngOnInit(): void {
+    this.getRole();
+  }
+
+  ngOnDestroy(): void {
+    this.subs$.unsubscribe();
+  }
+
+  getRole(): void {
+    this.subs$.subscribe((data: any) => {
+      switch (data.email) {
+        case 'alexballera@gmail.com':
+          this.role = 'admin';
+          break;
+        case 'ajballeralugo@gylgroup.com':
+          this.role = 'user';
+          break;
+        default:
+          break;
+      }
+    });
+  }
 }

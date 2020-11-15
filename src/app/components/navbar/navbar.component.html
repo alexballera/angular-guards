@@ -11,11 +11,11 @@
         <a class="nav-link" [routerLink]="['registro']" >Registro</a>
       </li>
 
-      <li class="nav-item" routerLinkActive="active" *ngIf="(auth.isAuthenticated$ | async) && user.email === 'alexballera@gmail.com'">
+      <li class="nav-item" routerLinkActive="active" *ngIf="role === 'admin'">
         <a class="nav-link" [routerLink]="['perfiles']">Administrador</a>
       </li>
 
-      <li class="nav-item" routerLinkActive="active" *ngIf="(auth.isAuthenticated$ | async) && user.email !== 'alexballera@gmail.com'">
+      <li class="nav-item" routerLinkActive="active" *ngIf="role === 'user'">
         <a class="nav-link" [routerLink]="['perfiles']">Usuario</a>
       </li>
     </ul>

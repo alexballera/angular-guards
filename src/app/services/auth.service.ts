@@ -12,13 +12,15 @@ export class AuthS {
   }
 
   getRole(): any {
-    switch (this.user.email) {
-      case 'alexballera@gmail.com':
-        return 'admin';
-      case 'ajballeralugo@gylgroup.com':
-        return 'user';
-      default:
-        break;
+    if (this.user) {
+      switch (this.user.email) {
+        case 'alexballera@gmail.com':
+          return 'admin';
+        case 'ajballeralugo@gylgroup.com':
+          return 'user';
+        default:
+          break;
+      }
     }
   }
 }
