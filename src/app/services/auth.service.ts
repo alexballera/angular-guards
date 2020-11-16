@@ -1,26 +1,43 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthS {
-  user: any;
+  email = '';
+  isLogged = false;
 
-  constructor(public auth: AuthService) {
-    this.auth.user$.subscribe(data => this.user = data);
+  constructor(private router: Router,
+              public auth: AuthService) {
+    this.getUser();
+    this.isLoggedIn();
   }
 
-  getRole(): any {
-    if (this.user) {
-      switch (this.user.email) {
-        case 'alexballera@gmail.com':
-          return 'admin';
-        case 'ajballeralugo@gylgroup.com':
-          return 'user';
-        default:
-          break;
-      }
+  async getUser(): Promise<void> {
+    await this.auth.user$.subscribe(({email}) => this.email = email);
+    this.getRole();
+  }
+
+  async isLoggedIn(): Promise<void> {
+    await this.auth.isAuthenticated$.subscribe(val => this.isLogged = val);
+  }
+
+  isAuthenticated(): boolean {
+    if (!this.isLogged) {
+      this.router.navigate(['home']);
+      return false;
+    }
+    return true;
+  }
+
+  getRole(): string {
+    switch (this.email) {
+      case 'alexballera@gmail.com':
+        return 'admin';
+      default:
+        return 'user';
     }
   }
 }
