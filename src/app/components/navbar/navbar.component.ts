@@ -1,6 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
+import { AuthS } from 'src/app/services/auth.service';
 
 @Component({
 
@@ -13,7 +14,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   subs$;
 
   constructor(@Inject(DOCUMENT) public document: Document,
-              public auth: AuthService) {
+              public auth: AuthService,
+              public as: AuthS) {
     this.subs$ = this.auth.user$;
   }
 

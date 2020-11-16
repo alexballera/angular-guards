@@ -36,8 +36,10 @@ export class AuthS {
     switch (this.email) {
       case 'alexballera@gmail.com':
         return 'admin';
-      default:
+      case 'ajballeralugo@gylgroup.com':
         return 'user';
+      default:
+        return '';
     }
   }
 }

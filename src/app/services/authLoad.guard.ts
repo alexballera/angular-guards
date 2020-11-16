@@ -7,9 +7,7 @@ import { AuthS } from './auth.service';
   providedIn: 'root'
 })
 export class AuthLoadGuard implements CanLoad {
-  email = '';
-  constructor(private as: AuthS) {
-  }
+  constructor(private as: AuthS) {}
 
   // Permite cargar un módulo de característica asíncrona Lazy Loading
   // Resolve: obtiene la data que el componente va a mostrar
