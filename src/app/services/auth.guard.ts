@@ -38,6 +38,12 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      const url: string = route.path;
+      console.log('Url:', url);
+      if (url === 'perfiles') {
+        alert('You are not authorised to visit this page');
+        return false;
+      }
       return this.checkIsAuthenticated();
   }
 

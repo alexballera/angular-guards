@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthLoadGuard } from './services/authLoad.guard';
 
 const routes: Routes = [
   {
@@ -14,6 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'perfiles',
+    canLoad: [AuthLoadGuard],
+    data: {role: 'admin'},
     loadChildren: () =>
       import('./pages/perfiles/perfiles.module').then(m => m.PerfilesModule)
   },
