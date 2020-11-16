@@ -10,7 +10,6 @@ export class AuthLoadGuard implements CanLoad {
   constructor(private as: AuthS) {}
 
   // Permite cargar un módulo de característica asíncrona Lazy Loading
-  // Resolve: obtiene la data que el componente va a mostrar
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
