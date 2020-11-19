@@ -31,9 +31,8 @@ export class AuthS {
     return true;
   }
 
-  getRole(): string {
-    this.getUser();
-    switch (this.email) {
+  getRole(val: string): string {
+    switch (val) {
       case 'alexballera@gmail.com':
         return 'admin';
       case 'ajballeralugo@gylgroup.com':

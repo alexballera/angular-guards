@@ -27,7 +27,7 @@
       <ng-template #loggedOut>
         <button type="button"
                 class="btn btn-outline-primary"
-                (click)="auth.loginWithRedirect()">
+                (click)="auth.loginWithRedirect(); getRole();">
           Ingresar
         </button>
       </ng-template>

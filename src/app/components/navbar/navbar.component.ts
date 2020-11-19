@@ -11,36 +11,26 @@ import { AuthS } from 'src/app/services/auth.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   role: string;
-  subs$;
+  user$;
   as$;
+  email: string;
 
   constructor(@Inject(DOCUMENT) public document: Document,
               public auth: AuthService,
               public as: AuthS) {
-    this.subs$ = this.auth.user$;
-  }
+              this.user$ = this.auth.user$;
+            }
 
   ngOnInit(): void {
-    this.getRole();
     this.as$ = this.as.isAuthenticated();
+    this.getRole();
   }
 
   ngOnDestroy(): void {
-    this.subs$.unsubscribe();
+    this.user$.unsubscribe();
   }
 
   getRole(): void {
-    this.subs$.subscribe((data: any) => {
-      switch (data.email) {
-        case 'alexballera@gmail.com':
-          this.role = 'admin';
-          break;
-        case 'ajballeralugo@gylgroup.com':
-          this.role = 'user';
-          break;
-        default:
-          break;
-      }
-    });
+    this.user$.subscribe(({email}) => this.role = this.as.getRole(email));
   }
 }
