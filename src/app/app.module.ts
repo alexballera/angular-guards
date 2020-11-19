@@ -8,6 +8,7 @@ import { PerfilesComponent } from './pages/perfiles/perfiles.component';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
+import { DemoPipesModule } from 'demo-pipes';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthModule } from '@auth0/auth0-angular';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DemoPipesModule,
     // Import the module into the application, with configuration
     AuthModule.forRoot({
       domain: 'dev-njhoyg45.auth0.com',

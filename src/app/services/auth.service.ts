@@ -17,7 +17,6 @@ export class AuthS {
 
   async getUser(): Promise<void> {
     await this.auth.user$.subscribe(({email}) => this.email = email);
-    this.getRole();
   }
 
   async isLoggedIn(): Promise<void> {
@@ -33,6 +32,7 @@ export class AuthS {
   }
 
   getRole(): string {
+    this.getUser();
     switch (this.email) {
       case 'alexballera@gmail.com':
         return 'admin';

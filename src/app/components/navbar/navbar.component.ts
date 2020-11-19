@@ -12,6 +12,7 @@ import { AuthS } from 'src/app/services/auth.service';
 export class NavbarComponent implements OnInit, OnDestroy {
   role: string;
   subs$;
+  as$;
 
   constructor(@Inject(DOCUMENT) public document: Document,
               public auth: AuthService,
@@ -21,6 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getRole();
+    this.as$ = this.as.isAuthenticated();
   }
 
   ngOnDestroy(): void {
