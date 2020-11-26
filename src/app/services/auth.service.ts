@@ -16,11 +16,11 @@ export class AuthS {
   }
 
   async getUser(): Promise<void> {
-    await this.auth.user$.subscribe(({email}) => this.email = email);
+    this.auth.user$.subscribe(({email}) => this.email = email);
   }
 
   async isLoggedIn(): Promise<void> {
-    await this.auth.isAuthenticated$.subscribe(val => this.isLogged = val);
+    this.auth.isAuthenticated$.subscribe(val => this.isLogged = val);
   }
 
   isAuthenticated(): boolean {
@@ -31,14 +31,12 @@ export class AuthS {
     return true;
   }
 
-  getRole(val: string): string {
-    switch (val) {
-      case 'alexballera@gmail.com':
-        return 'admin';
-      case 'ajballeralugo@gylgroup.com':
-        return 'user';
-      default:
-        return '';
-    }
+  getRole = (email: string) => {
+    const role = {
+      'alexballera@gmail.com': 'admin',
+      'ajballeralugo@gylgroup.com': 'user',
+      default: 'user'
+    };
+    return role[email] || role.default;
   }
 }
