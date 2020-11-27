@@ -34,7 +34,6 @@ export class AuthS {
   getRole = (email: string) => {
     const role = {
       'alexballera@gmail.com': 'admin',
-      'ajballeralugo@gylgroup.com': 'user',
       default: 'user'
     };
     return role[email] || role.default;
