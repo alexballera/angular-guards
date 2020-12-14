@@ -16,7 +16,11 @@ export class AuthS {
   }
 
   async getUser(): Promise<void> {
-    this.auth.user$.subscribe(({email}) => this.email = email);
+    this.auth.user$.subscribe(data => {
+      if (data) {
+        this.email = data.email
+      }
+    });
   }
 
   async isLoggedIn(): Promise<void> {
@@ -32,10 +36,12 @@ export class AuthS {
   }
 
   getRole = (email: string) => {
-    const role = {
-      'alexballera@gmail.com': 'admin',
-      default: 'user'
-    };
-    return role[email] || role.default;
+    if (email) {
+      const role = {
+        'alexballera@gmail.com': 'admin',
+        default: 'user'
+      };
+      return role[email] || role.default;
+    }
   }
 }

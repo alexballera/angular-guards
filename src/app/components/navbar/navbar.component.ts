@@ -17,12 +17,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   constructor(@Inject(DOCUMENT) public document: Document,
               public auth: AuthService,
-              public as: AuthS) {
+              public as: AuthS
+              ) {
               this.user$ = this.auth.user$;
             }
 
   ngOnInit(): void {
-    this.as$ = this.as.isAuthenticated();
     this.getRole();
   }
 
@@ -31,6 +31,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   getRole(): void {
-    this.user$.subscribe(({email}) => this.role = this.as.getRole(email));
+    this.user$.subscribe((data: any) => data ? this.role = this.as.getRole(data.email) : null);
   }
 }
